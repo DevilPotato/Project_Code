@@ -44,7 +44,7 @@ data[readable_days] = {
     "App":PID,
     "Current_Streak":current_streak
 }
-with open('streak data.json', 'w') as w:
+with open('streak data_dev.json', 'w') as w:
     json.dump(data, w, indent=4)
         
 #===== Debug Zone ======
