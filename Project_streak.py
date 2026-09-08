@@ -6,7 +6,7 @@ RESET = "\033[0m"
 
 current_streak = 0
 
-PID = subprocess.run(['PowerShell', "(Get-Process -Name Code).ProcessName[0]"], capture_output=True, text=True).stdout.strip()
+PROCESS_NAME = subprocess.run(['PowerShell', "(Get-Process -Name Code).ProcessName[0]"], capture_output=True, text=True).stdout.strip()
 
 
 local_time = time.localtime()
@@ -16,7 +16,7 @@ readable_days = time.strftime("%Y/%m/%d")
 
 streak_data = {f"{readable_days}":{
     "timestamp":readable_hours,
-    "App":PID,
+    "App":PROCESS_NAME,
     "Current_Streak":current_streak
 }}
 
@@ -35,7 +35,7 @@ else:
 
 data[readable_days] = {
     "timestamp":readable_hours,
-    "App":PID,
+    "App":PROCESS_NAME,
     "Current_Streak":current_streak
 }
 with open('streak data.json', 'w') as w:
