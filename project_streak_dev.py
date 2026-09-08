@@ -21,14 +21,14 @@ streak_data = {f"{readable_days}":{
 
 
 
-if not os.path.exists("streak data.json"):
+if not os.path.exists("streak data_dev.json"):
     with open('streak data.json', 'w') as w:
         w.write(json.dumps(streak_data, indent=4))
 else:
     print("path already exists")
 
 
-with open('streak data.json', 'r') as r:
+with open('streak data_dev.json', 'r') as r:
     data = json.load(r)
 
 previous_day = time.strftime("%Y/%m/%d", time.localtime(time.time() - 86400))
