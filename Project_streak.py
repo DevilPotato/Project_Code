@@ -3,6 +3,8 @@ import time
 import json
 import subprocess
 
+RESET = "\033[0m"
+
 current_streak = 0
 
 PID = subprocess.run(['PowerShell', "(Get-Process -Name Code).ProcessName[0]"], capture_output=True, text=True).stdout.strip()
@@ -19,13 +21,6 @@ streak_data = {f"{readable_days}":{
     "Current_Streak":current_streak
 }}
 
-
-
-if not os.path.exists("streak data.json"):
-    with open('streak data.json', 'w') as w:
-        w.write(json.dumps(streak_data, indent=4))
-else:
-    print("path already exists")
 
 
 with open('streak data.json', 'r') as r:
@@ -46,6 +41,9 @@ data[readable_days] = {
 }
 with open('streak data.json', 'w') as w:
     json.dump(data, w, indent=4)
-        
+
+if not readable_days in data[readable_days]:
+    print(f'\033[32mCome back tommorow to increase your Streak!{RESET}')
+
 #===== Debug Zone ======
 print(f"Current Streak: {data[readable_days]['Current_Streak']}")

@@ -22,7 +22,7 @@ streak_data = {f"{readable_days}":{
 
 
 if not os.path.exists("streak data_dev.json"):
-    with open('streak data.json', 'w') as w:
+    with open('streak data_dev.json', 'w') as w:
         w.write(json.dumps(streak_data, indent=4))
 else:
     print("path already exists")
